@@ -1,0 +1,88 @@
+.checkout-page {
+  padding: 2rem;
+}
+
+.checkout-loading,
+.empty-checkout-card {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 3rem;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+}
+
+.checkout-layout {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.checkout-summary {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.checkout-summary h1 {
+  margin-bottom: 1.5rem;
+}
+
+.checkout-section {
+  margin-bottom: 1.5rem;
+}
+
+.checkout-item,
+.totals-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.coupon-row {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.coupon-row input {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.75rem;
+}
+
+.coupon-row .secondary-btn,
+.cta-btn {
+  padding: 0.85rem 1.25rem;
+  border-radius: 0.75rem;
+}
+
+.checkout-totals {
+  background: #f9fafb;
+  padding: 1.25rem;
+  border-radius: 1rem;
+}
+
+.totals-row.total {
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 1rem;
+}
+
+.checkout-error,
+.coupon-message {
+  margin-top: 1rem;
+  color: #b91c1c;
+}
+
+.cta-btn {
+  width: 100%;
+  background: #111827;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}

@@ -1,0 +1,64 @@
+.login-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(3, 7, 18, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 60;
+  padding: 1.2rem;
+}
+
+.login-modal {
+  width: 100%;
+  max-width: 980px;
+  background: #fff;
+  border-radius: 16px;
+  padding: 1rem;
+  box-shadow: 0 30px 70px rgba(2, 6, 23, 0.5);
+  transform: translateY(0);
+  animation: modal-in 220ms ease;
+}
+
+@keyframes modal-in {
+  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.modal-close {
+  border: none;
+  background: transparent;
+  color: #334155;
+  font-size: 1.1rem;
+  float: right;
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 1rem;
+  align-items: center;
+}
+
+.modal-left { padding: 0.6rem 0.8rem; }
+.modal-left h2 { margin: 0 0 0.6rem 0; }
+.auth-tabs { display: flex; gap: 0.6rem; margin-bottom: 0.8rem; }
+.auth-tabs button { padding: 0.5rem 0.8rem; border-radius: 999px; border: 1px solid #e6eefc; background: #fff; }
+.auth-tabs button.active { background: #0f7af7; color: #fff; border-color: #0f7af7 }
+
+.mobile-input { display:flex; gap:0.5rem; }
+.mobile-input select { padding:0.6rem; border-radius:12px; border:1px solid #e6eefc; background:#f8fbff }
+.mobile-input input { padding:0.6rem; border-radius:12px; border:1px solid #e6eefc; flex:1 }
+
+.modal-actions { display:flex; gap:0.6rem; margin-top:0.8rem }
+.error { color: #dc2626; margin-top:0.4rem }
+
+.modal-right { display:flex; align-items:center; justify-content:center; }
+.illustration img { width:100%; height:260px; object-fit:cover; border-radius:12px }
+
+.otp-boxes input { width:100%; padding:0.8rem; border-radius:12px; border:1px solid #e6eefc }
+
+@media (max-width: 900px) {
+  .modal-grid { grid-template-columns: 1fr; }
+  .modal-right { order: -1 }
+}

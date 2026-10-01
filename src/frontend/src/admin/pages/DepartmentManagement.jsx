@@ -1,0 +1,15 @@
+import React, { useEffect, useState } from 'react'
+import { departmentApi } from '../services/adminService'
+import '../styles/admin.css'
+
+const message = (error, fallback) => error?.response?.data?.message || fallback
+
+function DepartmentManagement() {
+  const [items, setItems] = useState([]); const [form, setForm] = useState({ name: '', description: '' }); const [search, setSearch] = useState(''); const [loading, setLoading] = useState(true); const [saving, setSaving] = useState(false); const [error, setError] = useState('')
+  const load = async () => { setLoading(true); try { const response = await departmentApi.list({ page: 1, size: 100, search: search || undefined, sortBy: 'name', ascending: true }); setItems(response.data?.data?.content || []) } catch (e) { setError(message(e, 'Unable to load departments.')) } finally { setLoading(false) } }
+  useEffect(() => { load() }, [search])
+  const create = async (event) => { event.preventDefault(); if (!form.name.trim()) { setError('Department name is required.'); return }; setSaving(true); setError(''); try { await departmentApi.create({ name: form.name.trim(), description: form.description.trim() || null }); setForm({ name: '', description: '' }); load() } catch (e) { setError(message(e, 'Unable to create department.')) } finally { setSaving(false) } }
+  const toggle = async (item) => { try { if (item.active) await departmentApi.archive(item.publicId); else await departmentApi.restore(item.publicId); load() } catch (e) { setError(message(e, 'Unable to update department status.')) } }
+  return <div className='admin-module-page'><div className='admin-welcome'><div><h1>Departments</h1><p>Create and manage the top-level product classification.</p></div></div><div className='toolbar-card'><form className='toolbar-controls' onSubmit={create}><label className='field-group'><span>Department name *</span><input value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} /></label><label className='field-group'><span>Description</span><input value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} /></label><button className='primary-button' disabled={saving}>{saving ? 'Saving...' : 'Add Department'}</button></form></div><div className='toolbar-card'><label className='field-group'><span>Search</span><input value={search} onChange={(e) => setSearch(e.target.value)} placeholder='Search departments' /></label></div>{error && <div className='admin-error-box'>{error}</div>}<div className='table-card'>{loading ? <p>Loading departments...</p> : <div className='table-wrapper'><table className='data-table'><thead><tr><th>Name</th><th>Status</th><th>Action</th></tr></thead><tbody>{items.map((item) => <tr key={item.publicId}><td>{item.name}</td><td>{item.active ? 'Active' : 'Inactive'}</td><td><button className='ghost-button' onClick={() => toggle(item)}>{item.active ? 'Deactivate' : 'Restore'}</button></td></tr>)}</tbody></table></div>}</div></div>
+}
+export default DepartmentManagement

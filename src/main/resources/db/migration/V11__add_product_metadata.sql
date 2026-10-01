@@ -1,0 +1,14 @@
+ALTER TABLE products
+ADD COLUMN brand VARCHAR(100);
+
+ALTER TABLE products
+ADD COLUMN manufacturer VARCHAR(150);
+
+ALTER TABLE products
+ADD COLUMN dosage_form VARCHAR(30);
+
+ALTER TABLE products
+ADD COLUMN strength VARCHAR(50);
+
+ALTER TABLE products
+ADD COLUMN pack_size VARCHAR(50);

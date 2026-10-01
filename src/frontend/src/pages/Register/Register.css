@@ -1,0 +1,88 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+}
+
+.auth-card {
+  max-width: 440px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.auth-copy {
+  padding: 32px;
+  background: #fcf5ff;
+}
+
+.auth-badge {
+  display: inline-block;
+  color: #7b3fe4;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 16px;
+}
+
+.auth-copy h1 {
+  margin: 0 0 12px;
+  font-size: 1.75rem;
+}
+
+.auth-copy p {
+  margin: 0;
+  line-height: 1.6;
+  color: #555;
+}
+
+.auth-form {
+  padding: 24px;
+}
+
+.auth-form form {
+  display: grid;
+  gap: 16px;
+}
+
+.auth-form label {
+  display: grid;
+  gap: 8px;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #d6d6d6;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 1rem;
+}
+
+.auth-error {
+  color: #c72f2f;
+  margin: 0;
+}
+
+.cta-btn {
+  width: 100%;
+  border: none;
+  background: #6c63ff;
+  color: #fff;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cta-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

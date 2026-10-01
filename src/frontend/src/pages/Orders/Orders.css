@@ -1,0 +1,59 @@
+.orders-page {
+  padding: 2rem;
+}
+
+.orders-list {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.order-card {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.order-status {
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 0.85rem;
+}
+
+.order-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.order-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.secondary-btn,
+.cta-btn {
+  padding: 0.85rem 1.15rem;
+  border-radius: 0.75rem;
+  border: none;
+  cursor: pointer;
+}
+
+.secondary-btn {
+  background: #f3f4f6;
+}
+
+.cta-btn {
+  background: #111827;
+  color: #fff;
+}

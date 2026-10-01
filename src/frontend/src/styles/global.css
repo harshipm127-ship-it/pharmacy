@@ -1,0 +1,1612 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #f4f9ff 0%, #f7fafc 100%);
+  color: #0f172a;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.9rem;
+  padding: 1rem 1.2rem;
+  background: rgba(7, 27, 54, 0.96);
+  color: #ffffff;
+  box-shadow: 0 12px 32px rgba(15, 23, 42, 0.15);
+  backdrop-filter: blur(8px);
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #27b5ff, #16a34a);
+  color: #ffffff;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.brand-title {
+  display: block;
+  font-size: 1.02rem;
+  font-weight: 800;
+}
+
+.brand-subtitle {
+  display: block;
+  color: #bfdbfe;
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.location-pill,
+.search-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.65rem 0.9rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
+}
+
+.search-pill {
+  flex: 1;
+  max-width: 420px;
+}
+
+.search-pill input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #fff;
+}
+
+.search-pill input::placeholder {
+  color: #bfdbfe;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.icon-btn,
+.cart-pill,
+.profile-btn {
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  font-weight: 700;
+}
+
+.icon-btn {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border: none;
+}
+
+.cart-pill {
+  background: #eaf5ff;
+  color: #0f5ccf;
+}
+
+.profile-btn {
+  background: #2dcf86;
+  color: #062b1d;
+}
+
+.sub-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0.8rem 1rem 0;
+}
+
+.sub-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #334155;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  font-size: 0.92rem;
+}
+
+.sub-nav-link.active,
+.sub-nav-link:hover {
+  background: #eaf5ff;
+  color: #0f5ccf;
+}
+
+.sub-nav-item {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.sub-nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  background: #ffffff;
+  color: #334155;
+  cursor: pointer;
+  transition: transform 180ms ease, background 180ms ease, color 180ms ease;
+}
+
+.sub-nav-dropdown-toggle:hover,
+.sub-nav-dropdown-toggle.open {
+  background: #eff6ff;
+  color: #0f5ccf;
+  transform: rotate(180deg);
+}
+
+.sub-nav-button {
+  border: none;
+  background: transparent;
+  padding: 0.6rem 0.9rem;
+  cursor: pointer;
+}
+
+.mega-dropdown,
+.mega-menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  width: min(760px, 88vw);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18);
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-14px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+  z-index: 30;
+}
+
+.mega-dropdown.open,
+.mega-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mega-dropdown {
+  display: flex;
+  gap: 1rem;
+  min-width: 700px;
+  max-width: 780px;
+}
+
+.mega-dropdown-left {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mega-dropdown-label {
+  font-weight: 700;
+  color: #0f172a;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.mega-dropdown-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.mega-dropdown-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  border: none;
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.mega-dropdown-item:hover,
+.mega-dropdown-item.selected {
+  background: #dcfce7;
+  color: #0f5132;
+}
+
+.mega-dropdown-right {
+  width: min(400px, 100%);
+}
+
+.mega-dropdown-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mega-dropdown-panel-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.mega-dropdown-panel-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.mega-dropdown-panel-link {
+  display: block;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  transition: background 180ms ease;
+}
+
+.mega-dropdown-panel-link:hover {
+  background: #eff6ff;
+}
+
+.mega-dropdown-empty {
+  color: #64748b;
+  padding: 1rem;
+  border-radius: 16px;
+  background: #f8fafc;
+}
+
+.mega-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.mega-menu-shell {
+  display: flex;
+  gap: 1rem;
+}
+
+.mega-menu-sidebar {
+  min-width: 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.mega-menu-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 0.95rem;
+  border-radius: 14px;
+  border: none;
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 180ms ease;
+}
+
+.mega-menu-item:hover,
+.mega-menu-item.selected {
+  background: #e0f2fe;
+}
+
+.mega-menu-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mega-menu-content-header {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: #0f172a;
+}
+
+.mega-menu-links {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.mega-menu-link {
+  display: block;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: #f8fafc;
+  color: #0f172a;
+  transition: background 180ms ease;
+}
+
+.mega-menu-link:hover {
+  background: #eff6ff;
+}
+
+.wellness-mega-menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  width: min(820px, 92vw);
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18);
+  padding: 1.25rem;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-14px);
+  pointer-events: none;
+  transition: opacity 220ms ease, transform 220ms ease, visibility 220ms ease;
+  z-index: 30;
+}
+
+.wellness-mega-menu.open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.wellness-menu-layout {
+  display: flex;
+  gap: 1rem;
+  min-height: 280px;
+}
+
+.wellness-category-column,
+.wellness-subcategory-column {
+  background: #ffffff;
+  border-radius: 20px;
+}
+
+.wellness-category-column {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 0.75rem;
+}
+
+.wellness-category-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  border: none;
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 180ms ease, color 180ms ease;
+}
+
+.wellness-category-item:hover,
+.wellness-category-item.selected {
+  background: #dcfce7;
+  color: #0f5132;
+}
+
+.wellness-subcategory-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0.75rem;
+}
+
+.wellness-panel-header {
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 0.7rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.wellness-subcategory-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.wellness-subcategory-item {
+  width: 100%;
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-radius: 14px;
+  border: none;
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+.wellness-subcategory-item:hover,
+.wellness-subcategory-item:focus {
+  background: #eff6ff;
+  transform: translateX(1px);
+}
+
+.wellness-view-all {
+  background: #e6fffa;
+  color: #0f5132;
+}
+
+@media (max-width: 900px) {
+  .wellness-mega-menu {
+    left: 50%;
+    transform: translate(-50%, -14px);
+    width: min(92vw, 650px);
+  }
+
+  .wellness-menu-layout {
+    flex-direction: column;
+  }
+
+  .wellness-category-column,
+  .wellness-subcategory-column {
+    width: 100%;
+  }
+}
+
+.medicine-menu {
+  min-width: 220px;
+}
+
+.wellness-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.wellness-hero-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.wellness-hero-carousel {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  min-height: 420px;
+  background: linear-gradient(135deg, #0f5ccf 0%, #20b0a8 100%);
+}
+
+.wellness-hero-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 260ms ease, transform 260ms ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.wellness-hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.wellness-hero-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wellness-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(2, 6, 23, 0.7) 0%, rgba(2, 6, 23, 0.12) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 2rem;
+  gap: 0.7rem;
+  color: #ffffff;
+}
+
+.wellness-badge {
+  display: inline-flex;
+  width: fit-content;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(10px);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.wellness-hero-overlay h1 {
+  margin: 0;
+  font-size: clamp(1.8rem, 3vw, 2.9rem);
+  line-height: 1.08;
+}
+
+.wellness-hero-overlay p {
+  margin: 0;
+  max-width: 500px;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.wellness-primary-btn,
+.wellness-secondary-btn {
+  border: none;
+  border-radius: 999px;
+  padding: 0.8rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.wellness-primary-btn {
+  background: #ffffff;
+  color: #0f172a;
+  width: fit-content;
+}
+
+.wellness-primary-btn:hover,
+.wellness-secondary-btn:hover {
+  transform: translateY(-2px);
+}
+
+.wellness-secondary-btn {
+  background: rgba(255,255,255,0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.wellness-primary-btn.small,
+.wellness-secondary-btn.small {
+  padding: 0.7rem 0.9rem;
+  font-size: 0.92rem;
+}
+
+.wellness-hero-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.55rem;
+}
+
+.wellness-dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  border: none;
+  background: #cbd5e1;
+  cursor: pointer;
+}
+
+.wellness-dot.active {
+  background: #0f5ccf;
+  transform: scale(1.12);
+}
+
+.wellness-section {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.4rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.wellness-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.wellness-section-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.wellness-section-header a {
+  color: #0f5ccf;
+  font-weight: 700;
+}
+
+.wellness-category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.wellness-category-card,
+.wellness-concern-card,
+.wellness-brand-card,
+.wellness-product-card,
+.wellness-review-card,
+.wellness-article-card {
+  border-radius: 22px;
+  overflow: hidden;
+  background: #f8fbff;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.wellness-category-card:hover,
+.wellness-concern-card:hover,
+.wellness-brand-card:hover,
+.wellness-product-card:hover,
+.wellness-review-card:hover,
+.wellness-article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.wellness-category-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+}
+
+.wellness-category-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.wellness-category-card span {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.wellness-category-skeleton,
+.wellness-product-skeleton {
+  min-height: 140px;
+  border-radius: 22px;
+  background: linear-gradient(90deg, #f8fafc 25%, #eef2ff 50%, #f8fafc 75%);
+  background-size: 200% 100%;
+  animation: wellnessPulse 1.2s infinite;
+}
+
+.wellness-concern-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.wellness-concern-card {
+  position: relative;
+  min-height: 190px;
+}
+
+.wellness-concern-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.wellness-concern-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  padding: 1rem;
+  background: linear-gradient(180deg, transparent 0%, rgba(2, 6, 23, 0.7) 100%);
+}
+
+.wellness-concern-overlay h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.05rem;
+}
+
+.wellness-product-row,
+.wellness-product-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.wellness-product-row {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.wellness-product-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.wellness-product-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.wellness-product-card.compact {
+  gap: 0.8rem;
+}
+
+.wellness-product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.wellness-wishlist {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  border: none;
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.9);
+  color: #d946ef;
+  cursor: pointer;
+}
+
+.wellness-product-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding-top: 0.6rem;
+}
+
+.wellness-product-brand {
+  color: #0f5ccf;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.wellness-product-content h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #0f172a;
+}
+
+.wellness-rating {
+  color: #f59e0b;
+  font-weight: 700;
+}
+
+.wellness-price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.wellness-price {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.wellness-original-price {
+  color: #64748b;
+  text-decoration: line-through;
+  font-size: 0.92rem;
+}
+
+.wellness-product-actions {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.wellness-brand-row {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.wellness-brand-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 1rem;
+}
+
+.wellness-brand-card img {
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.wellness-brand-card span {
+  font-weight: 700;
+}
+
+.wellness-new-badge {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  background: #dcfce7;
+  color: #166534;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.wellness-review-grid,
+.wellness-article-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.wellness-review-card,
+.wellness-article-card {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.wellness-review-top {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.wellness-review-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f5ccf, #20b0a8);
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+.wellness-review-card p {
+  margin: 0;
+  color: #475569;
+}
+
+.wellness-review-product {
+  color: #0f5ccf;
+  font-weight: 700;
+}
+
+.wellness-article-card img {
+  width: 100%;
+  height: 170px;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.wellness-article-content h3 {
+  margin: 0 0 0.5rem;
+}
+
+.wellness-article-content a {
+  color: #0f5ccf;
+  font-weight: 700;
+}
+
+@keyframes wellnessPulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+@media (max-width: 1200px) {
+  .wellness-category-grid,
+  .wellness-concern-grid,
+  .wellness-product-row,
+  .wellness-product-grid,
+  .wellness-brand-row,
+  .wellness-review-grid,
+  .wellness-article-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .wellness-hero-carousel {
+    min-height: 340px;
+  }
+
+  .wellness-hero-overlay {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .wellness-category-grid,
+  .wellness-concern-grid,
+  .wellness-product-row,
+  .wellness-product-grid,
+  .wellness-brand-row,
+  .wellness-review-grid,
+  .wellness-article-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wellness-product-actions {
+    flex-direction: column;
+  }
+
+  .wellness-hero-carousel {
+    min-height: 280px;
+  }
+}
+
+.beauty-page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.beauty-section {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 1.5rem;
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.06);
+}
+
+.beauty-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.beauty-section-header h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 1.2vw, 1.9rem);
+}
+
+.beauty-section-header a {
+  color: #0f5ccf;
+  font-weight: 700;
+}
+
+.beauty-category-grid {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.beauty-category-circle-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.8rem;
+  border-radius: 22px;
+  background: #f8fbff;
+  text-align: center;
+  color: #0f172a;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+}
+
+.beauty-category-circle-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+  background: #eff6ff;
+}
+
+.beauty-category-icon {
+  width: 78px;
+  height: 78px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ffffff;
+  display: grid;
+  place-items: center;
+  box-shadow: inset 0 0 0 1px rgba(15, 23, 42, 0.06);
+}
+
+.beauty-category-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.beauty-slider {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.beauty-slider-track {
+  position: relative;
+  min-height: 320px;
+}
+
+.beauty-slider-image {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  display: block;
+}
+
+.beauty-slider-copy {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  max-width: 430px;
+  color: #ffffff;
+  text-shadow: 0 18px 40px rgba(15, 23, 42, 0.32);
+}
+
+.beauty-slider-copy span {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.16);
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.beauty-slider-copy h2 {
+  margin: 0;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.05;
+}
+
+.beauty-slider-copy p {
+  margin: 1rem 0 0;
+  max-width: 380px;
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.86);
+  color: #0f172a;
+  font-size: 1.6rem;
+  cursor: pointer;
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.16);
+}
+
+.slider-arrow.left {
+  left: 1rem;
+}
+
+.slider-arrow.right {
+  right: 1rem;
+}
+
+.beauty-horizontal-scroll {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(220px, 1fr);
+  gap: 1rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.beauty-scroll-card,
+.beauty-best-card,
+.beauty-recent-card {
+  background: #f8fbff;
+  border-radius: 20px;
+  padding: 1rem;
+  min-width: 220px;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.beauty-scroll-card:hover,
+.beauty-best-card:hover,
+.beauty-recent-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px rgba(15, 23, 42, 0.08);
+}
+
+.beauty-scroll-card img,
+.beauty-best-card img,
+.beauty-recent-card img {
+  width: 100%;
+  border-radius: 18px;
+  object-fit: cover;
+}
+
+.beauty-scroll-card span {
+  display: block;
+  margin-top: 0.8rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.beauty-glow-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.beauty-glow-card {
+  display: grid;
+  grid-template-columns: 1fr 120px;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.2rem;
+  border-radius: 24px;
+  color: #0f172a;
+  text-decoration: none;
+  min-height: 150px;
+}
+
+.beauty-glow-card:hover {
+  transform: translateY(-4px);
+}
+
+.beauty-glow-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.beauty-glow-copy span {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.beauty-glow-copy p {
+  margin: 0;
+  color: #334155;
+}
+
+.beauty-glow-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.beauty-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.beauty-product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
+  padding: 1rem;
+  position: relative;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.beauty-product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.wishlist-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: none;
+  background: rgba(248, 250, 252, 0.9);
+  color: #d946ef;
+  border-radius: 999px;
+  width: 2.6rem;
+  height: 2.6rem;
+  cursor: pointer;
+}
+
+.beauty-product-image-wrap {
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.beauty-product-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.beauty-product-content h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.beauty-product-brand {
+  color: #64748b;
+  margin: 0.35rem 0;
+}
+
+.beauty-price-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.beauty-price {
+  font-weight: 700;
+}
+
+.beauty-original-price {
+  color: #64748b;
+  text-decoration: line-through;
+}
+
+.beauty-discount {
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.beauty-product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #64748b;
+}
+
+.beauty-product-actions {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.beauty-cart-button,
+.beauty-buy-button {
+  border: none;
+  padding: 0.9rem 1rem;
+  border-radius: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+}
+
+.beauty-cart-button {
+  background: #0f5ccf;
+  color: #ffffff;
+}
+
+.beauty-buy-button {
+  display: inline-flex;
+  justify-content: center;
+  background: #eff6ff;
+  color: #0f5ccf;
+}
+
+.beauty-brand-row {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+
+.beauty-brand-pill {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 18px;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.beauty-best-card {
+  display: grid;
+  gap: 1rem;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 1rem;
+  min-width: 260px;
+  border: 1px solid #e2e8f0;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.beauty-best-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+}
+
+.beauty-best-card-image {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.beauty-best-card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.beauty-best-card-body h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.beauty-best-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.beauty-offer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.beauty-offer-card {
+  padding: 1.5rem;
+  border-radius: 22px;
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.beauty-offer-card h3 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.beauty-offer-card p {
+  margin: 0;
+  color: #475569;
+}
+
+.beauty-recent-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.beauty-recent-card {
+  display: grid;
+  gap: 0.8rem;
+  background: #f8fbff;
+  border-radius: 22px;
+  padding: 1rem;
+}
+
+.beauty-recent-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+@media (max-width: 1200px) {
+  .beauty-category-grid,
+  .beauty-brand-row,
+  .beauty-product-grid,
+  .beauty-offer-grid,
+  .beauty-recent-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .beauty-glow-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .beauty-category-grid,
+  .beauty-brand-row,
+  .beauty-product-grid,
+  .beauty-offer-grid,
+  .beauty-recent-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .beauty-horizontal-scroll {
+    grid-auto-columns: minmax(220px, 80vw);
+  }
+
+  .beauty-section {
+    padding: 1.2rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .search-pill {
+    order: 3;
+    width: 100%;
+  }
+
+  .site-header {
+    align-items: flex-start;
+  }
+
+  .beauty-slider-track {
+    min-height: 240px;
+  }
+
+  .beauty-slider-copy {
+    left: 1rem;
+    right: 1rem;
+  }
+
+  .slider-arrow {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+}
+
+.medicine-button {
+  justify-content: space-between;
+}
+
+.medicine-button .chevron {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.medicine-dropdown {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  left: 0;
+  width: 240px;
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.14);
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+  transition: opacity 180ms ease, transform 180ms ease;
+  z-index: 30;
+}
+
+.medicine-dropdown.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.dropdown-option {
+  display: block;
+  padding: 1rem 1.1rem;
+  color: #0f172a;
+  font-weight: 600;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.dropdown-option:hover {
+  background: #eff6ff;
+  color: #0f4ec2;
+}
+
+.site-footer {
+  margin-top: 1rem;
+  background: #08192d;
+  color: #e2e8f0;
+  padding: 2rem 1.1rem 1rem;
+}
+
+.footer-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.2rem;
+}
+
+.site-footer h3,
+.site-footer h4 {
+  margin: 0 0 0.75rem;
+  color: #ffffff;
+}
+
+.site-footer p,
+.site-footer li {
+  color: #bfd1e7;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 1rem auto 0;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(191, 209, 231, 0.2);
+  color: #bfd1e7;
+  text-align: center;
+}
+
+main {
+  max-width: 1200px;
+  margin: 1rem auto;
+  padding: 0 1rem 2rem;
+}
+
+@media (max-width: 1100px) {
+  .footer-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) {
+  .site-header {
+    flex-wrap: wrap;
+  }
+
+  .search-pill {
+    order: 3;
+    max-width: none;
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .site-header {
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}

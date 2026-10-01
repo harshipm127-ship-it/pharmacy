@@ -1,0 +1,117 @@
+.fade-page {
+  animation: fadeInPage 240ms ease-out;
+}
+
+@keyframes fadeInPage {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.categories-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.breadcrumb-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #475569;
+  font-size: 0.95rem;
+}
+
+.breadcrumb-link {
+  color: #0f7af7;
+  cursor: pointer;
+}
+
+.breadcrumb-current {
+  color: #0f172a;
+  font-weight: 700;
+}
+
+.categories-header {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.categories-header h1 {
+  margin: 0;
+  font-size: clamp(2rem, 2.8vw, 2.4rem);
+  color: #0f172a;
+}
+
+.categories-header p {
+  margin: 0.4rem 0 0;
+  color: #64748b;
+}
+
+.category-search input {
+  width: 100%;
+  max-width: 320px;
+  padding: 0.95rem 1rem;
+  border-radius: 14px;
+  border: 1px solid #d1e9f8;
+  background: #fff;
+  color: #0f172a;
+}
+
+.category-tabs {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tab {
+  padding: 0.85rem 1.2rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: #f8fafc;
+  color: #334155;
+  cursor: pointer;
+  transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+}
+
+.tab:hover,
+.tab.active {
+  background: #0f7af7;
+  color: #fff;
+  border-color: rgba(15, 122, 247, 0.28);
+  transform: translateY(-1px);
+}
+
+.category-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.empty-state {
+  border-radius: 20px;
+  padding: 2rem;
+  background: #f8fafc;
+  text-align: center;
+  color: #475569;
+}
+
+@media (max-width: 1080px) {
+  .category-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .categories-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
